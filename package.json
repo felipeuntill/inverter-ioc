@@ -1,0 +1,25 @@
+{
+  "name": "inverter-ioc",
+  "version": "0.0.1",
+  "description": "Just an ioc container made in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeuntill/inverter-ioc.git"
+  },
+  "keywords": [
+    "ioc",
+    "javascript",
+    "js",
+    "SOLID"
+  ],
+  "author": "felipeuntill",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/felipeuntill/inverter-ioc/issues"
+  },
+  "homepage": "https://github.com/felipeuntill/inverter-ioc#readme"
+}
