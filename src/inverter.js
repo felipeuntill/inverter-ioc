@@ -36,4 +36,4 @@ class Inverter {
   }
 }
 
-export default Inverter;
+module.exports = Inverter.instance;
