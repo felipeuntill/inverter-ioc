@@ -20,6 +20,12 @@ class Inverter {
   }
 
   resolve (name, scope) {
+
+    if(name === undefined || scope === undefined)
+      throw new Error(`The name and the scope are required.`);
+
+  //  if(respository.hasOnwproperty(name))
+
     var implementation = this.repository[name];
 
     if(implementation instanceof scope)
