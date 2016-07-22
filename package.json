@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Just an ioc container made in javascript",
   "main": "index.js",
+  "bin": {
+    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"
   },
@@ -22,7 +25,9 @@
     "url": "https://github.com/felipeuntill/inverter-ioc/issues"
   },
   "homepage": "https://github.com/felipeuntill/inverter-ioc#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "coveralls": "^2.11.11"
+  },
   "dependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.5.3"

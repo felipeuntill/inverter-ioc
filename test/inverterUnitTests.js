@@ -38,6 +38,15 @@ describe("Inverter IoC Container Tests", function() {
 
   describe("Resolving Instances", function() {
 
+    it("throw an exception if the instance was not registred", function () {
+        let test = "throw_an_exception_if_the_instance_was_not_registred";
+        let registredInstance = new testClasses.SimpleClass(test);
+        inverter.RegisterType(test, registredInstance);
+        expect(() => {
+            let resolvedInstance = inverter.resolve(`${test}Exception`, testClasses.SimpleClassTwo);
+        }).to.throw(Error);
+    });
+
     it("throw an exception if the type of the instance was diferente than expected", function() {
         let test = "throw_an_exception_if_the_type_of_the_instance_was_diferente_than_expected";
         let registredInstance   =  new testClasses.SimpleClass(test);
@@ -48,9 +57,5 @@ describe("Inverter IoC Container Tests", function() {
     });
 
   });
-
-  describe("Granting", function() {
-
-  })
 
 });
