@@ -1,9 +1,6 @@
 # inverter-ioc
 Just a fast, tiny and useful IoC Container
 
-
-
-
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
   [![Linux Build][travis-image]][travis-url]
@@ -12,7 +9,7 @@ Just a fast, tiny and useful IoC Container
 ## Installation
 
 ```bash
-$ npm install optionextender
+$ npm install inverter-ioc
 ```
 
 ## Quick Start
@@ -42,11 +39,7 @@ $ npm test
 
 ## Features
 
-  * Properties substitution
-
-## People
-
-The author of optionextender is [Felipe Assunção](https://github.com/felipeuntill)
+  * Upcoming
 
 ## License
 
