@@ -8,6 +8,7 @@
     "/"
   ],
   "scripts": {
+    "coverage": "istanbul cover _mocha -- -R spec",
     "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
@@ -27,7 +28,8 @@
   },
   "homepage": "https://github.com/felipeuntill/inverter-ioc#readme",
   "devDependencies": {
-    "coveralls": "^2.11.11"
+    "coveralls": "^2.11.11",
+    "istanbul": "^0.4.4"
   },
   "dependencies": {
     "chai": "^3.5.0",
