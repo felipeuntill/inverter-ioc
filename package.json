@@ -1,11 +1,12 @@
 {
   "name": "inverter-ioc",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Just an ioc container made in javascript",
-  "main": "index.js",
-  "bin": {
-    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
-  },
+  "main": "src",
+  "_id": "inverter-ioc@0.0.3",
+  "_requiredBy": [
+    "/"
+  ],
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"
   },

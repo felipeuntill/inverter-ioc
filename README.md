@@ -15,17 +15,9 @@ $ npm install inverter-ioc
 ## Quick Start
 
 ```js
-var optionExtender = require('optionextender')
 
-var previsouly = { 
-    name : 'previously name'  
-};
-var replace = {  
-    name : 'replaced name' 
-};
+//js
 
-console.log(optionExtender(previsouly, replace));
-// { name : 'replaced name'}
 ```
 
 ## Tests
@@ -45,11 +37,11 @@ $ npm test
 
   [GNU GENERAL PUBLIC LICENSE](LICENSE)
 
-[npm-image]: https://img.shields.io/npm/v/optionextender.svg
-[npm-url]: https://npmjs.org/package/optionextender
-[downloads-image]: https://img.shields.io/npm/dm/optionextender.svg
-[downloads-url]: https://npmjs.org/package/optionextender
+[npm-image]: https://img.shields.io/npm/v/inverter-ioc.svg
+[npm-url]: https://npmjs.org/package/inverter-ioc
+[downloads-image]: https://img.shields.io/npm/dm/inverter-ioc.svg
+[downloads-url]: https://npmjs.org/package/inverter-ioc
 [coverage-url]: https://coveralls.io/github/felipeuntill/inverter-ioc?branch=master
-[travis-image]: https://travis-ci.org/felipeuntill/optionExtender.svg
+[travis-image]: https://travis-ci.org/felipeuntill/inverter-ioc.svg
 [coverage-image]: https://coveralls.io/repos/github/felipeuntill/inverter-ioc/badge.svg?branch=master
-[travis-url]: https://travis-ci.org/felipeuntill/optionExtender
+[travis-url]: https://travis-ci.org/felipeuntill/inverter-ioc
