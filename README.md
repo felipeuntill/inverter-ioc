@@ -15,8 +15,6 @@ $ npm install inverter-ioc
 ## Quick Start
 
 ```js
-
-//js
 // Importing the module.
 let inverter = import('inverter-ioc');
 // Creating an instance of a class called 'YourClassName'-
