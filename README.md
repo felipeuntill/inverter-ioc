@@ -36,7 +36,12 @@ let resolvedInstance    =   inverter.resolve("registerName", YourClassName);
 $ npm install
 $ npm test
 ```
+  To analyze the code coverage status, install all dependencies and run `npm run coverage`:
 
+```bash
+$ npm install
+$ npm run coverage
+```
 ## Features
 
   * Upcoming
