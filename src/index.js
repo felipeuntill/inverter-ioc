@@ -1,4 +1,4 @@
 // Exporting the module.
-var inverter = require('./inveter');
+var inverter = require('./inverter');
 
 module.exports = inverter;
