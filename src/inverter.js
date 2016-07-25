@@ -19,7 +19,11 @@ class Inverter {
       if(this.repository.hasOwnProperty(name))
         throw new Error(`There's already an instance registred with the name ${name} in the container.`);
 
-      this.repository[name] = implementation;
+      var dependencies = this.getDependencies(implementation);
+      var requirements = this.getInstances(dependencies);
+      var resolved     = this.dispatch(implementation, requirements);
+
+      this.repository[name] = resolved;
   }
 
   resolve (name, scope) {
@@ -27,10 +31,7 @@ class Inverter {
     if(name === undefined || scope === undefined)
       throw new Error(`The name and the scope are required.`);
 
-    if(!this.repository.hasOwnProperty(name))
-      throw new Error(`Theres no instances registred with the name ${name}`);
-
-    var implementation = this.repository[name];
+    var implementation = this.loadFromRepository(name);
 
     if(!(implementation instanceof scope))
       throw new Error(`The registred member: ${name} is not an instance of the expected scope.`);
@@ -38,10 +39,54 @@ class Inverter {
     return implementation;
   }
 
+  getDependencies(func) {
+
+    const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+    const ARGUMENT_NAMES = /([^\s,]+)/g;
+
+    let fnStr = func.toString().replace(STRIP_COMMENTS, '');
+    var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
+
+    if(result === null) result = [];
+
+    return result;
+  }
+
+  getInstances(names) {
+
+    var instances = [];
+
+    names.forEach((name) => {
+      instances.push(this.loadFromRepository(name, true));
+    });
+
+    return instances;
+  }
+
+  loadFromRepository(name, dependency){
+
+    if(!this.repository.hasOwnProperty(name))
+      throw new Error(
+        dependency ?
+        `The dependency ${name} was not previously registred` :
+        `Theres no instances registred with the name ${name}`
+      );
+
+      return this.repository[name];
+  }
+
+  dispatch(fn, args) {
+
+      if (typeof fn !== "function")
+        throw new Error(`The dispath method requires a function`);
+
+      return fn.apply(this, args || []);  // args is optional, use an empty array by default
+  }
+
   static get instance() {
-    if(!this[container]) {
-      this[container] = new Inverter(enforcer);
-    }
+
+    if(!this[container]) this[container] = new Inverter(enforcer);
+
     return this[container];
   }
 }
