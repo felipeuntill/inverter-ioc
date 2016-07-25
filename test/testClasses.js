@@ -1,6 +1,6 @@
 class SimpleClass {
-  constructor(testname) {
-    this.testname = testname;
+  constructor() {
+
   }
 }
 

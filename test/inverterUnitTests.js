@@ -27,15 +27,13 @@ describe("Inverter IoC", function() {
         it("can just register an instance", function() {
             let test = "can_just_register_an_instance";
             expect(() => {
-                let registredInstance = new testClasses.SimpleClass();
-                inverter.RegisterType(test, registredInstance);
+                inverter.RegisterType(test, testClasses.SimpleClass);
             }).to.not.throw(Error);
         });
 
         it("can register an instance and get it", function() {
             let test = "can_register_an_instance_and_get_it";
-            let registredInstance = new testClasses.SimpleClass();
-            inverter.RegisterType(test, registredInstance);
+            inverter.RegisterType(test, testClasses.SimpleClass);
             let resolvedInstance = inverter.resolve(test, testClasses.SimpleClass);
             expect(registredInstance).equal(resolvedInstance);
         });

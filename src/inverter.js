@@ -80,7 +80,7 @@ class Inverter {
       if (typeof fn !== "function")
         throw new Error(`The dispath method requires a function`);
 
-      return fn.apply(this, args || []);  // args is optional, use an empty array by default
+      return new fn.apply(this, args || []);  // args is optional, use an empty array by default
   }
 
   static get instance() {
