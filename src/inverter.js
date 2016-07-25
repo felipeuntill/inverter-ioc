@@ -8,7 +8,7 @@ class Inverter {
     if(enforcerInit != enforcer)
       throw new Error("Inverter is a singleton class, you can't instance it.");
 
-    this.repository = Object.create(null);
+    this.repository = Object.create({});
   }
 
   RegisterType (name, implementation) {
@@ -24,14 +24,15 @@ class Inverter {
     if(name === undefined || scope === undefined)
       throw new Error(`The name and the scope are required.`);
 
-  //  if(respository.hasOnwproperty(name))
+    if(!this.repository.hasOwnProperty(name))
+      throw new Error(`Theres no instances registred with the name ${name}`);
 
     var implementation = this.repository[name];
 
-    if(implementation instanceof scope)
-      return implementation;
+    if(!(implementation instanceof scope))
+      throw new Error(`The registred member: ${name} is not an instance of the expected scope.`);
 
-    throw new Error(`The registred member: ${name} is not an instance of the expected scope.`);
+    return implementation;
   }
 
   static get instance() {

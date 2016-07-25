@@ -13,6 +13,13 @@ describe("Inverter IoC", function() {
           }).to.throw(Error);
       });
 
+      it("can't be initialized with Symbol", function() {
+          let test = "cant_be_initialized_with_symbol";
+          expect(() => {
+              let fall = new inverter(new Symbol());
+          }).to.throw(Error);
+      });
+
     });
 
     describe("Registering Instances", function() {
@@ -72,6 +79,13 @@ describe("Inverter IoC", function() {
             let test = "throw_an_exception_if_the_type_of_the_instance_was_diferente_than_expected";
             let registredInstance = new testClasses.SimpleClass(test);
             inverter.RegisterType(test, registredInstance);
+            expect(() => {
+                let resolvedInstance = inverter.resolve(test, testClasses.SimpleClassTwo);
+            }).to.throw(Error);
+        });
+
+        it("throw an exception if the instance was not previously registred", function() {
+            let test = "throw_an_exception_if_the_instance_was_not_previously_registred";
             expect(() => {
                 let resolvedInstance = inverter.resolve(test, testClasses.SimpleClassTwo);
             }).to.throw(Error);
