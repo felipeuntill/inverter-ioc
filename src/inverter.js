@@ -13,7 +13,10 @@ class Inverter {
 
   RegisterType (name, implementation) {
 
-      if(this.repository[name])
+      if(name === undefined || implementation === undefined)
+        throw new Error(`The name and the implementation are required.`);
+
+      if(this.repository.hasOwnProperty(name))
         throw new Error(`There's already an instance registred with the name ${name} in the container.`);
 
       this.repository[name] = implementation;

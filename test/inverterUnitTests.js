@@ -1,5 +1,5 @@
-var expect = require("chai").expect;
-var inverter = require("../src/inverter");
+var expect      = require("chai").expect;
+var inverter    = require("../src/inverter");
 var testClasses = require("./testClasses");
 
 describe("Inverter IoC", function() {
@@ -43,12 +43,11 @@ describe("Inverter IoC", function() {
         it("throw an exception if some arguments is missing", function() {
             let test = "throw_an_exception_if_some_arguments_is_missing";
             let registredInstance = new testClasses.SimpleClass();
-            inverter.RegisterType(test, registredInstance);
             expect(() => {
-                let resolvedInstance = inverter.resolve();
+                inverter.RegisterType();
             }).to.throw(Error);
             expect(() => {
-                let resolvedInstance = inverter.resolve(test);
+                inverter.RegisterType(test);
             }).to.throw(Error);
         });
 
@@ -88,6 +87,18 @@ describe("Inverter IoC", function() {
             let test = "throw_an_exception_if_the_instance_was_not_previously_registred";
             expect(() => {
                 let resolvedInstance = inverter.resolve(test, testClasses.SimpleClassTwo);
+            }).to.throw(Error);
+        });
+
+        it("throw an exception if some arguments is missing", function() {
+            let test = "throw_an_exception_if_some_arguments_is_missing";
+            let registredInstance = new testClasses.SimpleClass();
+            inverter.RegisterType(test, registredInstance);
+            expect(() => {
+                let resolvedInstance = inverter.resolve();
+            }).to.throw(Error);
+            expect(() => {
+                let resolvedInstance = inverter.resolve(test);
             }).to.throw(Error);
         });
 
