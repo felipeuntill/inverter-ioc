@@ -25,7 +25,7 @@ let registredInstance = new YourClassName();
 inverter.RegisterType("registerName", registredInstance);
 
 // Calling a previously created instance.
-let resolvedInstance    =   inverter.resolve("registerName", YourClassName);
+let resolvedInstance = inverter.resolve("registerName", YourClassName);
 ```
 
 ## Tests
