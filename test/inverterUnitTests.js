@@ -2,7 +2,7 @@ var expect = require("chai").expect;
 var inverter = require("../src/inverter");
 var testClasses = require("./testClasses");
 
-describe("Inverter IoC", function() {
+describe("Inverter IoC - Unit Tests", function() {
 
     describe("Granting Singleton Functionality", function() {
 

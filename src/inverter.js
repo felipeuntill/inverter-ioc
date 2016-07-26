@@ -28,12 +28,12 @@ class Inverter {
 
     resolve(name, scope) {
 
-        if (name === undefined || scope === undefined)
-            throw new Error(`The name and the scope are required.`);
+        if (name === undefined)
+            throw new Error(`The name and are required.`);
 
         var implementation = this.loadFromRepository(name);
 
-        if (!(implementation instanceof scope))
+        if (scope !== undefined && !(implementation instanceof scope))
             throw new Error(`The registred member: ${name} is not an instance of the expected scope.`);
 
         return implementation;
@@ -79,7 +79,7 @@ class Inverter {
 
         if (typeof fn !== "function")
             throw new Error(`The dispath method requires a function`);
-            
+
         return new(Function.prototype.bind.apply(fn, args));
     }
 
