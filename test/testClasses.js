@@ -1,16 +1,15 @@
 class SimpleClass {
-  constructor() {
+    constructor() {
 
-  }
+    }
 }
 
 module.exports.SimpleClass = SimpleClass;
 
-
 class SimpleClassTwo {
-  constructor(testname) {
-    this.testname = testname;
-  }
+    constructor(testname) {
+        this.testname = testname;
+    }
 }
 
 module.exports.SimpleClassTwo = SimpleClassTwo;

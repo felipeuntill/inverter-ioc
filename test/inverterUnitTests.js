@@ -1,24 +1,24 @@
-var expect      = require("chai").expect;
-var inverter    = require("../src/inverter");
+var expect = require("chai").expect;
+var inverter = require("../src/inverter");
 var testClasses = require("./testClasses");
 
 describe("Inverter IoC", function() {
 
     describe("Granting Singleton Functionality", function() {
 
-      it("can't be initialized", function() {
-          let test = "cant_be_initialized";
-          expect(() => {
-              let fall = new inverter();
-          }).to.throw(Error);
-      });
+        it("can't be initialized", function() {
+            let test = "cant_be_initialized";
+            expect(() => {
+                let fall = new inverter();
+            }).to.throw(Error);
+        });
 
-      it("can't be initialized with Symbol", function() {
-          let test = "cant_be_initialized_with_symbol";
-          expect(() => {
-              let fall = new inverter(new Symbol());
-          }).to.throw(Error);
-      });
+        it("can't be initialized with Symbol", function() {
+            let test = "cant_be_initialized_with_symbol";
+            expect(() => {
+                let fall = new inverter(new Symbol());
+            }).to.throw(Error);
+        });
 
     });
 
