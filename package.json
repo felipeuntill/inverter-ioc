@@ -1,9 +1,9 @@
 {
   "name": "inverter-ioc",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Just an ioc container made in javascript",
   "main": "./distribution/",
-  "_id": "inverter-ioc@0.0.8",
+  "_id": "inverter-ioc@0.0.9",
   "_requiredBy": [
     "/"
   ],
