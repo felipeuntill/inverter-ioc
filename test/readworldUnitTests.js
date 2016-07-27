@@ -12,8 +12,7 @@ describe("Inverter IoC - Real world tests", function() {
               this.pi = 3.14159;
             });
             var constants = inverter.resolve('Constants01');
-            console.log(constants);
-            var pi  = constants().pi;
+            var pi  = constants.pi;
             expect(pi).to.equal(3.14159);
         });
 
