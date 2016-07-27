@@ -26,6 +26,32 @@ inverter.RegisterType("registerName", YourClassName);
 let resolvedInstance = inverter.resolve("registerName", YourClassName);
 ```
 
+## Real World Example
+```js
+// Registering Constants
+inverter.RegisterType('Constants', function() {
+  this.pi = 3.14159;
+  return this;
+});
+
+// Registering the circle class, using a previously registred function
+inverter.RegisterType('Circle', function(Constants) {
+    this.area = function(radius) {
+        return Constants.pi * radius * radius;
+    };
+    this.getPi = function () {
+      return Constants.pi;
+    }
+    return this;
+});
+
+// Resolving the cicle instance
+var circle = inverter.resolve('Circle');
+
+// Using the instance
+console.log(circle.area(2));
+console.log(circle.getPi());
+```
 ## Tests
 
   To run the test suite, first install the dependencies, then run `npm test`:

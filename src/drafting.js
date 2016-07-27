@@ -29,14 +29,21 @@ var inverter = require('./inverter');
 // }));
 
 
-let test = "can_declare_a_constant_instance";
 inverter.RegisterType('Constants', function() {
   this.pi = 3.14159;
   return this;
-}, true);
-var constants = inverter.resolve('Constants');
+});
 
-console.log(constants);
-console.log(constants.pi);
+inverter.RegisterType('Circle', function(Constants) {
+    this.area = function(radius) {
+        return Constants.pi * radius * radius;
+    };
+    this.getPi = function () {
+      return Constants.pi;
+    }
+    return this;
+});
+var circle = inverter.resolve('Circle');
 
-//var pi  = constants.pi;
+console.log(circle.area(2));
+console.log(circle.getPi());
