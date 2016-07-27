@@ -11,7 +11,7 @@ class Inverter {
         this.repository = Object.create({});
     }
 
-    RegisterType(name, implementation) {
+    RegisterType(name, implementation, log) {
 
         if (name === undefined || implementation === undefined)
             throw new Error(`The name and the implementation are required.`);
@@ -21,7 +21,7 @@ class Inverter {
 
         var dependencies = this.getDependencies(implementation);
         var requirements = this.getInstances(dependencies);
-        var resolved = this.dispatch(implementation, requirements);
+        var resolved     = this.dispatch(implementation, requirements);
 
         this.repository[name] = resolved;
     }
@@ -78,9 +78,17 @@ class Inverter {
     dispatch(fn, args) {
 
         if (typeof fn !== "function")
-            throw new Error(`The dispath method requires a function`);
+            throw new Error(`The dispath method requires a function or class`);
 
-        return new(Function.prototype.bind.apply(fn, args));
+        if(this.CheckClass(fn))
+          return new(Function.prototype.bind.apply(fn, args));
+
+        return fn.apply(this, args || []);
+    }
+
+    CheckClass(func) {
+      return typeof func === 'function'
+        && /^class\s/.test(Function.prototype.toString.call(func));
     }
 
     static get instance() {

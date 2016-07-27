@@ -13,9 +13,17 @@ inverter.RegisterType("a", function() {
 });
 inverter.RegisterType("instance", function(a) {
 
-    a.log();
+  //  console.log(a);
+
+    //a.log();
+
     return {
         leiba: 'samba leiba'
     };
 
 }, true);
+
+
+console.log(inverter.CheckClass(function () {
+
+}));
