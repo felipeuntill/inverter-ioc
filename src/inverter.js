@@ -23,6 +23,10 @@ class Inverter {
         var requirements = this.getInstances(dependencies);
         var resolved     = this.dispatch(implementation, requirements);
 
+        if(log) {
+
+        }
+
         this.repository[name] = resolved;
     }
 
@@ -81,9 +85,9 @@ class Inverter {
             throw new Error(`The dispath method requires a function or class`);
 
         if(this.CheckClass(fn))
-          return new(Function.prototype.bind.apply(fn, args));
-
-        return fn.apply(this, args || []);
+            return new(Function.prototype.bind.apply(fn, args));
+        // return fn.apply(this, args || []);
+        return fn(...args);
     }
 
     CheckClass(func) {

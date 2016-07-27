@@ -10,6 +10,7 @@ describe("Inverter IoC - Real world tests", function() {
             let test = "can_declare_a_constant_instance";
             inverter.RegisterType('Constants01', function() {
               this.pi = 3.14159;
+              return this;
             });
             var constants = inverter.resolve('Constants01');
             var pi  = constants.pi;
@@ -20,11 +21,13 @@ describe("Inverter IoC - Real world tests", function() {
             let test = "can_declare_a_constant_instance";
             inverter.RegisterType('Constants', function() {
               this.pi = 3.14159;
+              return this;
             });
             inverter.RegisterType('Circle', function(Constants) {
                 this.area = function(radius) {
                     return Constants.pi * radius * radius;
                 };
+                return this;
             });
             var circle = inverter.resolve('Circle');
             var area  = circle.area(1);
