@@ -27,13 +27,13 @@ describe("Inverter IoC - Unit Tests", function() {
         it("can just register an instance", function() {
             let test = "can_just_register_an_instance";
             expect(() => {
-                inverter.RegisterType(test, testClasses.SimpleClass);
+                inverter.register(test, testClasses.SimpleClass);
             }).to.not.throw(Error);
         });
 
         it("can register an instance and get it", function() {
             let test = "can_register_an_instance_and_get_it";
-            inverter.RegisterType(test, testClasses.SimpleClass);
+            inverter.register(test, testClasses.SimpleClass);
             let resolvedInstance = inverter.resolve(test, testClasses.SimpleClass);
             expect(resolvedInstance instanceof testClasses.SimpleClass).to.be.true;
         });
@@ -41,15 +41,15 @@ describe("Inverter IoC - Unit Tests", function() {
         it("throw an exception if some arguments is missing", function() {
             let test = "throw_an_exception_if_some_arguments_is_missing";
             expect(() => {
-                inverter.RegisterType();
+                inverter.register();
             }).to.throw(Error);
         });
 
         it("throw an exception if theres already an instance using the register name", function() {
             let test = "throw_an_exception_if_theres_already_an_instance_using_the_register_name";
             expect(() => {
-                inverter.RegisterType(test, testClasses.SimpleClass);
-                inverter.RegisterType(test, testClasses.SimpleClassTwo);
+                inverter.register(test, testClasses.SimpleClass);
+                inverter.register(test, testClasses.SimpleClassTwo);
             }).to.throw(Error);
         });
 
@@ -59,7 +59,7 @@ describe("Inverter IoC - Unit Tests", function() {
 
         it("throw an exception if the instance was not registred", function() {
             let test = "throw_an_exception_if_the_instance_was_not_registred";
-            inverter.RegisterType(test, testClasses.SimpleClass);
+            inverter.register(test, testClasses.SimpleClass);
             expect(() => {
                 let resolvedInstance = inverter.resolve(`${test}Exception`, testClasses.SimpleClassTwo);
             }).to.throw(Error);
@@ -67,7 +67,7 @@ describe("Inverter IoC - Unit Tests", function() {
 
         it("throw an exception if the type of the instance was diferente than expected", function() {
             let test = "throw_an_exception_if_the_type_of_the_instance_was_diferente_than_expected";
-            inverter.RegisterType(test, testClasses.SimpleClass);
+            inverter.register(test, testClasses.SimpleClass);
             expect(() => {
                 let resolvedInstance = inverter.resolve(test, testClasses.SimpleClassTwo);
             }).to.throw(Error);
@@ -82,7 +82,7 @@ describe("Inverter IoC - Unit Tests", function() {
 
         it("throw an exception if some arguments is missing", function() {
             let test = "throw_an_exception_if_some_arguments_is_missing";
-            inverter.RegisterType(test, testClasses.SimpleClass);
+            inverter.register(test, testClasses.SimpleClass);
             expect(() => {
                 let resolvedInstance = inverter.resolve();
             }).to.throw(Error);

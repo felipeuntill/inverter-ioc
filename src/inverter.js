@@ -11,7 +11,7 @@ class Inverter {
         this.repository = Object.create({});
     }
 
-    RegisterType(name, implementation, log) {
+    register(name, implementation, options) {
 
         if (name === undefined || implementation === undefined)
             throw new Error(`The name and the implementation are required.`);
@@ -19,12 +19,16 @@ class Inverter {
         if (this.repository.hasOwnProperty(name))
             throw new Error(`There's already an instance registred with the name ${name} in the container.`);
 
+        options = options || {};
+
         var dependencies = this.getDependencies(implementation);
         var requirements = this.getInstances(dependencies);
         var resolved     = this.dispatch(implementation, requirements);
 
-        if(log) {
-
+        if(options.log) {
+            console.log(dependencies);
+            console.log(requirements);
+            console.log(resolved);
         }
 
         this.repository[name] = resolved;
@@ -44,6 +48,9 @@ class Inverter {
     }
 
     getDependencies(func) {
+
+        if (typeof func !== "function")
+             return [];
 
         const STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
         const ARGUMENT_NAMES = /([^\s,]+)/g;
@@ -82,7 +89,7 @@ class Inverter {
     dispatch(fn, args) {
 
         if (typeof fn !== "function")
-            throw new Error(`The dispath method requires a function or class`);
+            return fn;
 
         if(this.CheckClass(fn))
             return new(Function.prototype.bind.apply(fn, args));

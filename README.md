@@ -20,7 +20,7 @@ $ npm install inverter-ioc
 let inverter = import('inverter-ioc');
 
 // Registering the current instance for future use.
-inverter.RegisterType("registerName", YourClassName);
+inverter.register("registerName", YourClassName);
 
 // Calling a previously created instance.
 let resolvedInstance = inverter.resolve("registerName", YourClassName);
@@ -29,13 +29,13 @@ let resolvedInstance = inverter.resolve("registerName", YourClassName);
 ## Real World Example
 ```js
 // Registering Constants
-inverter.RegisterType('Constants', function() {
+inverter.register('Constants', function() {
   this.pi = 3.14159;
   return this;
 });
 
 // Registering the circle class, using a previously registred function
-inverter.RegisterType('Circle', function(Constants) {
+inverter.register('Circle', function(Constants) {
     this.area = function(radius) {
         return Constants.pi * radius * radius;
     };

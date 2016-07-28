@@ -1,12 +1,11 @@
 // Exporting the module.
 var inverter = require('./inverter');
 
-inverter.RegisterType('Constants', function() {
-  this.pi = 3.14159;
-  return this;
+inverter.register('Constants', function () {
+  return { pi : 3.14159 };
 });
 
-inverter.RegisterType('Circle', function(Constants) {
+inverter.register('Circle', function(Constants) {
     this.area = function(radius) {
         return Constants.pi * radius * radius;
     };
@@ -16,6 +15,8 @@ inverter.RegisterType('Circle', function(Constants) {
     return this;
 });
 var circle = inverter.resolve('Circle');
+var constants = inverter.resolve('Constants');
 
+console.log(constants);
 console.log(circle.area(2));
 console.log(circle.getPi());

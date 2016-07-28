@@ -7,8 +7,7 @@ describe("Inverter IoC - Real world tests", function() {
     describe("Constants", function() {
 
         it("can declare a constant instance", function() {
-            let test = "can_declare_a_constant_instance";
-            inverter.RegisterType('Constants01', function() {
+            inverter.register('Constants01', function() {
               this.pi = 3.14159;
               return this;
             });
@@ -18,12 +17,11 @@ describe("Inverter IoC - Real world tests", function() {
         });
 
         it("can declare a constant an use a previously instance as requirement", function() {
-            let test = "can_declare_a_constant_instance";
-            inverter.RegisterType('Constants', function() {
+            inverter.register('Constants', function() {
               this.pi = 3.14159;
               return this;
             });
-            inverter.RegisterType('Circle', function(Constants) {
+            inverter.register('Circle', function(Constants) {
                 this.area = function(radius) {
                     return Constants.pi * radius * radius;
                 };
@@ -32,6 +30,17 @@ describe("Inverter IoC - Real world tests", function() {
             var circle = inverter.resolve('Circle');
             var area  = circle.area(1);
             expect(area).to.equal(3.14159);
+        });
+
+        it("can declare a constant an use a previously instance as requirement", function() {
+            inverter.register('UsingInstances', function(Constants, Circle) {
+                this.checkValues = function() {
+                    return Constants.pi == Circle.area(1);
+                };
+                return this;
+            });
+            var using = inverter.resolve('UsingInstances');
+            expect(using.checkValues()).to.equal(true);
         });
 
     });
