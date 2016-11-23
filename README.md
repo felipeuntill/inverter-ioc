@@ -6,6 +6,7 @@ Just a fast, tiny and useful IoC container made in Javascript
   [![NPM Downloads][downloads-image]][downloads-url]
   [![Linux Build][travis-image]][travis-url]
   [![Coverage][coverage-image]][coverage-url]
+  [![dependencies Status](https://david-dm.org/felipeuntill/inverter-ioc/status.svg)](https://david-dm.org/felipeuntill/inverter-ioc)
 
 ## Installation
 
