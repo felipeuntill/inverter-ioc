@@ -20,6 +20,13 @@ describe("Inverter IoC - Unit Tests", function() {
             }).to.throw(Error);
         });
 
+        it("can't be initialized with any argument", function() {
+            let test = "cant_be_initialized_with_any_argument";
+            expect(() => {
+                let fall = new inverter(null);
+            }).to.throw(Error);
+        });
+
     });
 
     describe("Registering Instances", function() {

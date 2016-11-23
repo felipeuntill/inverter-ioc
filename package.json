@@ -2,16 +2,14 @@
   "name": "inverter-ioc",
   "version": "0.1.2",
   "description": "Just an ioc container made in javascript",
-  "main": "./dist/",
+  "main": "./src/inverter.js",
   "_id": "inverter-ioc@0.1.2",
   "_requiredBy": [
     "/"
   ],
   "scripts": {
-    "build": "babel src --presets babel-preset-es2015 --out-dir dist",
     "coverage": "istanbul cover _mocha -- -R spec",
-    "test": "./node_modules/.bin/mocha --reporter spec",
-    "prepublish": "npm run build"
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
   "repository": {
     "type": "git",

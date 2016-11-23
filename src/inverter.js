@@ -25,12 +25,6 @@ class Inverter {
         var requirements = this.getInstances(dependencies);
         var resolved     = this.dispatch(implementation, requirements);
 
-        if(options.log) {
-            console.log(dependencies);
-            console.log(requirements);
-            console.log(resolved);
-        }
-
         this.repository[name] = resolved;
     }
 
@@ -93,7 +87,7 @@ class Inverter {
 
         if(this.CheckClass(fn))
             return new(Function.prototype.bind.apply(fn, args));
-        // return fn.apply(this, args || []);
+
         return fn(...args);
     }
 
