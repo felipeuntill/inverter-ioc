@@ -17,7 +17,7 @@ $ npm install inverter-ioc
 
 ```js
 // Importing the module.
-let inverter = import('inverter-ioc');
+let inverter = require('inverter-ioc');
 
 // Registering the current instance for future use.
 inverter.register("registerName", YourClassName);
