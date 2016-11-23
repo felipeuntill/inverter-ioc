@@ -28,6 +28,9 @@ let resolvedInstance = inverter.resolve("registerName", YourClassName);
 
 ## Real World Example
 ```js
+// Importing the module.
+let inverter = require('inverter-ioc');
+
 // Registering Constants
 inverter.register('Constants', function() {
   this.pi = 3.14159;
